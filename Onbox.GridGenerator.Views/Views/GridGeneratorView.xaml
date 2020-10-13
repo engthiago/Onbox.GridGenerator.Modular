@@ -1,0 +1,20 @@
+﻿<rmvc:RevitMvcViewBase x:Class="Onbox.GridGenerator.Views.GridGeneratorView"
+					DataContext="{Binding RelativeSource={RelativeSource Self}}"
+					xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+					xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					xmlns:mvc="clr-namespace:Onbox.Mvc.V8;assembly=Onbox.Mvc"
+					xmlns:rmvc="clr-namespace:Onbox.Mvc.Revit.V8;assembly=Onbox.Mvc.Revit"
+					mc:Ignorable="d"
+					Title="GridGeneratorView"
+					MinWidth="500"
+					MinHeight="450"
+					Width="500"
+					Height="450">
+
+	<Grid>
+        <mvc:Spinner/>
+    </Grid>
+
+</rmvc:RevitMvcViewBase>

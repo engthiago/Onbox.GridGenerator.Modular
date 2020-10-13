@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Onbox.GridGenerator.UIApp App</Name>
+    <Assembly>Onbox.GridGenerator.UIApp/Onbox.GridGenerator.UIApp.dll</Assembly>
+    <AddInId>1c2bf232-a923-4b05-8b63-999f06eba4cb</AddInId>
+    <FullClassName>Onbox.GridGenerator.UIApp.Revit.App</FullClassName>
+    <VendorId>Onbox.GridGenerator.UIApp</VendorId>
+    <VendorDescription>Onbox.GridGenerator.UIApp</VendorDescription>
+    <AllowLoadingIntoExistingSession>true</AllowLoadingIntoExistingSession>
+  </AddIn>
+</RevitAddIns>

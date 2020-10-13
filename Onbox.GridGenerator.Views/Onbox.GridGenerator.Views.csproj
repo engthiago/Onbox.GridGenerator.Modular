@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Fody.3.1.3\build\Fody.targets" Condition="Exists('..\packages\Fody.3.1.3\build\Fody.targets')" />
+  <Import Project="..\packages\PropertyChanged.Fody.2.5.9\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.2.5.9\build\PropertyChanged.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+        None
+    </ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6287A5C-CF3B-4970-A4AC-B41E287BD045}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>Onbox.GridGenerator</RootNamespace>
+    <AssemblyName>Onbox.GridGenerator.Views</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Features>IOperation</Features>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Onbox.Abstractions, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Abstractions.8.0.0\lib\netstandard2.0\Onbox.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Core, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Core.8.0.0\lib\netstandard2.0\Onbox.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Di, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Di.8.0.0\lib\netstandard2.0\Onbox.Di.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Mvc.Abstractions, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Mvc.Abstractions.8.0.0\lib\netstandard2.0\Onbox.Mvc.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Mvc.Revit.Abstractions, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Mvc.Revit.Abstractions.8.0.0\lib\netstandard2.0\Onbox.Mvc.Revit.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Revit.Abstractions, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Revit.Abstractions.8.0.0\lib\netstandard2.0\Onbox.Revit.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Mvc, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Mvc.8.0.0\lib\Onbox.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Mvc.Revit, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Mvc.Revit.8.0.0\lib\Onbox.Mvc.Revit.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged, Version=2.5.9.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.2.5.9\lib\net452\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Onbox.Analyzers.8.0.0\analyzers\dotnet\cs\Onbox.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\Onbox.Analyzers.8.0.0\analyzers\dotnet\cs\Onbox.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MvcContainerPipeline.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Views\GridGeneratorView.xaml.cs">
+      <DependentUpon>GridGeneratorView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Onbox.GridGenerator.Core\Onbox.GridGenerator.Core.csproj">
+      <Project>{5d5ce55b-7fcc-45d1-8ddf-dd1765fdd403}</Project>
+      <Name>Onbox.GridGenerator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Onbox.GridGenerator.DB\Onbox.GridGenerator.DB.csproj">
+      <Project>{75b3c964-8ed7-4078-b00c-e33dd287f537}</Project>
+      <Name>Onbox.GridGenerator.DB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\GridGeneratorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\Packages\Fody.3.1.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Packages\Fody.3.1.3\build\Fody.targets'))" />
+  </Target>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Couldn't find Dependencies need to build: Please make sure to have all Onbox Dependencies and Fody.PropertyChanged before continuing...</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\Packages\Fody.3.1.3\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\Packages\Fody.3.1.3\build\Fody.targets'))" />
+  </Target>
+</Project>
