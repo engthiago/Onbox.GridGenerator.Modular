@@ -110,6 +110,7 @@
     <Compile Include="Services\DynamoElementService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GridGenerator.dyn" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
