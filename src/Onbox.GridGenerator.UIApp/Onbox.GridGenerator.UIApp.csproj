@@ -209,8 +209,7 @@
     <Compile Include="Revit\Commands\Availability\AvailableOnAnyDocument.cs" />
     <Compile Include="Revit\Commands\Availability\AvailableOnFamily.cs" />
     <Compile Include="Revit\Commands\Availability\AvailableOnProject.cs" />
-    <Compile Include="Revit\Commands\HelloCommand.cs" />
-    <Compile Include="Services\TaskMessageService.cs" />
+    <Compile Include="Revit\Commands\GridGeneratorCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -257,6 +256,9 @@
       <Project>{e6287a5c-cf3b-4970-a4ac-b41e287bd045}</Project>
       <Name>Onbox.GridGenerator.Views</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

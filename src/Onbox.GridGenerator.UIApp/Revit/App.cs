@@ -5,8 +5,9 @@ using Onbox.Revit.V8.Applications;
 using Onbox.Revit.V8.UI;
 using Autodesk.Revit.UI;
 using Onbox.GridGenerator.UIApp.Revit.Commands.Availability;
+using Onbox.GridGenerator.ContainerExtensions;
+using Onbox.GridGenerator.Views;
 using Onbox.GridGenerator.UIApp.Revit.Commands;
-using Onbox.GridGenerator.UIApp.Services;
 
 namespace Onbox.GridGenerator.UIApp.Revit
 {
@@ -20,12 +21,8 @@ namespace Onbox.GridGenerator.UIApp.Revit
             var br = ribbonManager.GetLineBreak();
 
             // Adds a Ribbon Panel to the Addins tab
-            var addinPanelManager = ribbonManager.CreatePanel("Onbox.GridGenerator.UIApp");
-            addinPanelManager.AddPushButton<HelloCommand, AvailableOnProject>($"Hello{br}Framework", "onbox_logo");
-
-            // Adds a new Ribbon Tab with a new Panel
-            var panelManager = ribbonManager.CreatePanel("Onbox.GridGenerator.UIApp", "Hello Panel");
-            panelManager.AddPushButton<HelloCommand, AvailableOnProject>($"Hello{br}Framework", "onbox_logo");
+            var addinPanelManager = ribbonManager.CreatePanel("Grid Generator Modular");
+            addinPanelManager.AddPushButton<GridGeneratorCommand, AvailableOnProject>($"Grid{br}Generator", "onbox_logo");
         }
 
         public override Result OnStartup(IContainer container, UIControlledApplication application)
@@ -33,8 +30,10 @@ namespace Onbox.GridGenerator.UIApp.Revit
             // Here you can add all necessary dependencies to the container
             container.AddOnboxCore();
 
-            // Add TaskDialog Service the message service
-            container.AddSingleton<IMessageService, TaskMessageService>();
+            container.AddUnitConverters();
+            container.AddGridGenerator();
+
+            container.Pipe<MvcContainerPipeline>();
 
             return Result.Succeeded;
         }
