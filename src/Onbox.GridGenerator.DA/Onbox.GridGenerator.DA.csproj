@@ -127,6 +127,18 @@
     <Analyzer Include="..\packages\Onbox.Analyzers.7.0.0\analyzers\dotnet\cs\Onbox.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="DesignAutomationBridge, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autodesk.Forge.DesignAutomation.Revit.2020.0.0-beta1\lib\net47\DesignAutomationBridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Abstractions, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Abstractions.8.0.0\lib\netstandard2.0\Onbox.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Onbox.Di, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Onbox.Di.8.0.0\lib\netstandard2.0\Onbox.Di.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -137,6 +149,8 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContainerLifeCycle.cs" />
+    <Compile Include="GridGeneratorApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -159,6 +173,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Onbox.GridGenerator.Core\Onbox.GridGenerator.Core.csproj">
+      <Project>{5D5CE55B-7FCC-45D1-8DDF-DD1765FDD403}</Project>
+      <Name>Onbox.GridGenerator.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Onbox.GridGenerator.DB\Onbox.GridGenerator.DB.csproj">
+      <Project>{75b3c964-8ed7-4078-b00c-e33dd287f537}</Project>
+      <Name>Onbox.GridGenerator.DB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
