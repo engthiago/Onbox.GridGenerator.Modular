@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="DBApplication">
+    <Name>Grid Generator</Name>
+    <FullClassName>Onbox.GridGenerator.DA.App</FullClassName>
+    <Text>Grid Generator for Design Automation</Text>
+    <Description>Grid Generator Application for AU 2020 LAB</Description>
+    <VisibilityMode>AlwaysVisible</VisibilityMode>
+    <Assembly>.\Onbox.GridGenerator\Onbox.GridGenerator.DA.dll</Assembly>
+    <AddInId>1c2bf232-a923-4b05-8b63-999f06eba4cb</AddInId>
+    <VendorId>OBX</VendorId>
+  </AddIn>
+</RevitAddIns>

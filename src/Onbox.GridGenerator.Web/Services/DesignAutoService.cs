@@ -2,6 +2,7 @@
 using Autodesk.Forge.DesignAutomation.Model;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Onbox.GridGenerator.Models;
 using Onbox.GridGenerator.Web.Models.Adsk;
 using RestSharp;
@@ -168,16 +169,16 @@ namespace Onbox.GridGenerator.Web.Services
             gridCollectionParam.Description = "The input json with a collection of grids.";
             gridCollectionParam.LocalName = "gridCollection.json";
             gridCollectionParam.Verb = Verb.Get;
-            gridCollectionParam.Required = true;
+            gridCollectionParam.Required = false;
             gridCollectionParam.Ondemand = false;
-            gridCollectionParam.Zip = true;
+            gridCollectionParam.Zip = false;
 
             var resultsParam = new DesignAutoParam();
-            resultsParam.Description = "The Resulting NUnit Xml Tests.";
-            resultsParam.LocalName = "results.xml";
+            resultsParam.Description = "The resulting Revit model with grids.";
+            resultsParam.LocalName = "result.rvt";
             resultsParam.Verb = Verb.Put;
             resultsParam.Zip = false;
-            resultsParam.Required = true;
+            resultsParam.Required = false;
             resultsParam.Ondemand = false;
 
             var activity = new Activity();
@@ -207,17 +208,18 @@ namespace Onbox.GridGenerator.Web.Services
             await this.designAutoClient.DeleteActivityAsync(unqualifiedActivityName);
         }
 
-        public async Task<WorkItemStatus> CreateWorkItemAsync(string activityName, GridCollection gridInput, string baseResultUrl)
+        public async Task<WorkItemStatus> CreateWorkItemAsync(string activityName, GridCollection gridCollection, string callbackUrl)
         {
             XrefTreeArgument gridCollectionArg = null;
-            if (gridInput != null)
+            if (gridCollection != null)
             {
+                var json = JsonConvert.SerializeObject(gridCollection);
                 gridCollectionArg = new XrefTreeArgument();
-                gridCollectionArg.Url = $"data:application/json,{gridInput}";
+                gridCollectionArg.Url = $"data:application/json,{json}";
                 gridCollectionArg.Verb = Verb.Get;
             }
 
-            var callbackResultUrl = $"{baseResultUrl}api/designauto/results";
+            var callbackResultUrl = $"{callbackUrl}";
             var resultsArg = new XrefTreeArgument();
             resultsArg.Url = callbackResultUrl;
             resultsArg.Verb = Verb.Put;

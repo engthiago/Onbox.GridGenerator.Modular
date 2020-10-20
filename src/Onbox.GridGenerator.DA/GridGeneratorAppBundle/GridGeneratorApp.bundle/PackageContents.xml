@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ApplicationPackage Name="RevitDesignAutomation" Description="Grid Generator for Design Automation" Author="Grid Generator">
+  <CompanyDetails Name="Grid Generator"/>
+  <Components Description="Grid Generator for Design Automation">
+    <RuntimeRequirements SeriesMax="R2021" SeriesMin="R2019" Platform="Revit" OS="Win64"/>
+    <ComponentEntry LoadOnRevitStartup="True" LoadOnCommandInvocation="False" AppDescription="Grid Generator" ModuleName="./Contents/GridGenerator.addin" Version="1.0.0" AppName="Grid Generator"/>
+  </Components>
+</ApplicationPackage>

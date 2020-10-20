@@ -24,6 +24,7 @@ namespace Onbox.GridGenerator.Web
 
             services.AddDesignAutomation(this.Configuration);
             services.AddTransient<DesignAutoService>();
+            services.AddTransient<RevitFileService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

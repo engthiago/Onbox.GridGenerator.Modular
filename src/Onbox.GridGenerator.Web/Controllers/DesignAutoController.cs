@@ -11,11 +11,16 @@ namespace Onbox.GridGenerator.Web.Controllers
     public class DesignAutoController : ControllerBase
     {
         private readonly DesignAutoService designAutoService;
+        private readonly RevitFileService revitFileService;
         private readonly IConfiguration config;
 
-        public DesignAutoController(DesignAutoService designAutoService, IConfiguration config)
+        public DesignAutoController(
+            DesignAutoService designAutoService,
+            RevitFileService revitFileService,
+            IConfiguration config)
         {
             this.designAutoService = designAutoService;
+            this.revitFileService = revitFileService;
             this.config = config;
         }
 
@@ -49,7 +54,6 @@ namespace Onbox.GridGenerator.Web.Controllers
             if (string.IsNullOrWhiteSpace(input.FileName))
             {
                 input.FileName = this.config["Forge:DA:App"];
-                return BadRequest("Zip file name not specified");
             }
 
             // Default Engine
@@ -76,7 +80,6 @@ namespace Onbox.GridGenerator.Web.Controllers
             if (string.IsNullOrWhiteSpace(input.ActivityName))
             {
                 input.ActivityName = this.config["Forge:DA:App"];
-                return BadRequest("Zip file name not specified");
             }
 
             // Default Engine
@@ -96,12 +99,11 @@ namespace Onbox.GridGenerator.Web.Controllers
             if (string.IsNullOrWhiteSpace(input.ActivityName))
             {
                 input.ActivityName = this.config["Forge:DA:App"];
-                return BadRequest("Zip file name not specified");
             }
 
-            var baseUrl = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}";
+            var callback = $"{this.Request.Scheme}://{this.Request.Host}{this.Request.PathBase}/api/designauto/results";
 
-            var status = await this.designAutoService.CreateWorkItemAsync(input.ActivityName, input.GridCollection, baseUrl);
+            var status = await this.designAutoService.CreateWorkItemAsync(input.ActivityName, input.GridCollection, callback);
             return Ok(status);
         }
 
@@ -117,6 +119,13 @@ namespace Onbox.GridGenerator.Web.Controllers
         {
             await this.designAutoService.ClearAccount();
 
+            return Ok();
+        }
+
+        [HttpPut("results")]
+        public async Task<IActionResult> ResultsCallback()
+        {
+            await this.revitFileService.SaveLocal(this.Request.Body);
             return Ok();
         }
 

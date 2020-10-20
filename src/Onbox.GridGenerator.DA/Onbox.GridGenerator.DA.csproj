@@ -60,7 +60,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'D2021|x64'">
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\$(Configuration)\</OutputPath>
+    <OutputPath>GridGeneratorAppBundle\GridGeneratorApp.bundle\Contents\Onbox.GridGenerator\</OutputPath>
     <DefineConstants>TRACE;DEBUG;Revit2021</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -71,7 +71,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'R2021|x64'">
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <OutputPath>bin\x64\$(Configuration)\</OutputPath>
+    <OutputPath>GridGeneratorAppBundle\GridGeneratorApp.bundle\Contents\Onbox.GridGenerator\</OutputPath>
     <DefineConstants>TRACE;Revit2021</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -142,7 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContainerLifeCycle.cs" />
-    <Compile Include="GridGeneratorApp.cs" />
+    <Compile Include="DA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -160,6 +160,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="GridGeneratorAppBundle\GridGeneratorApp.bundle\Contents\GridGenerator.addin" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -175,6 +176,12 @@
       <Project>{75b3c964-8ed7-4078-b00c-e33dd287f537}</Project>
       <Name>Onbox.GridGenerator.DB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GridGeneratorAppBundle\GridGeneratorApp.bundle\PackageContents.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="GridGeneratorAppBundle\GridGeneratorApp.bundle\Contents\Onbox.GridGenerator\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
