@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <PackageReference Include="Autodesk.Forge.DesignAutomation" Version="3.0.3" />
+    <PackageReference Include="RestSharp" Version="106.11.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Onbox.GridGenerator.Core\Onbox.GridGenerator.Core.csproj" />
   </ItemGroup>
 
 

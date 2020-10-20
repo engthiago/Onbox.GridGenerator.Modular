@@ -26,24 +26,26 @@ namespace Onbox.GridGenerator.DA
         private void OnApplicationReady(object sender, DesignAutomationReadyEventArgs e)
         {
             var appData = e.DesignAutomationData;
-            var doc = appData.RevitDoc;
+            var doc = appData.RevitApp.NewProjectDocument(UnitSystem.Metric);
             e.Succeeded = true;
 
             // Create container and resolve necessary classes
-            var container = ContainerLifeCycle.Create();
-            var revitGridService = container.Resolve<IRevitGridService>();
-
-            // Get gridInfo list
-            var json = File.ReadAllText("Grids.json");
-            var grids = JsonConvert.DeserializeObject<List<GridInfo>>(json);
-
-            using (var t = new Transaction(doc, "Create grids"))
+            using (var container = ContainerLifeCycle.Create())
             {
-                t.Start();
+                var revitGridService = container.Resolve<IRevitGridService>();
 
-                revitGridService.CreateRevitGrids(doc, grids);
+                // Get gridInfo list
+                var json = File.ReadAllText("gridCollection.json");
+                var gridCollection = JsonConvert.DeserializeObject<GridCollection>(json);
 
-                t.Commit();
+                using (var t = new Transaction(doc, "Create grids"))
+                {
+                    t.Start();
+
+                    revitGridService.CreateRevitGrids(doc, gridCollection.GridInfoList);
+
+                    t.Commit();
+                }
             }
         }
 

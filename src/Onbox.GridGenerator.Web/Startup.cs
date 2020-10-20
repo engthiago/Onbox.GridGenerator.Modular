@@ -1,15 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Autodesk.Forge.DesignAutomation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Onbox.GridGenerator.Web.Services;
 
 namespace Onbox.GridGenerator.Web
 {
@@ -26,6 +21,9 @@ namespace Onbox.GridGenerator.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddDesignAutomation(this.Configuration);
+            services.AddTransient<DesignAutoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
