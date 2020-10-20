@@ -73,12 +73,26 @@ namespace Onbox.GridGenerator.Services
             if (isVertical)
             {
                 var name = this.GetGridName(parallelGrids.Count - 1, true);
-                newGrid = this.gridInfoFactory.CreateVertical(name, previousOffset);
+                if (parallelGrids.Count == 0)
+                {
+                    newGrid = this.gridInfoFactory.CreateVertical(name, 0, previousOffset);
+                }
+                else
+                {
+                    newGrid = this.gridInfoFactory.CreateVertical(name, previousOffset);
+                }
             }
             else
             {
                 string name = this.GetGridName(parallelGrids.Count, false);
-                newGrid = this.gridInfoFactory.CreateHorizontal(name, previousOffset);
+                if (parallelGrids.Count == 0)
+                {
+                    newGrid = this.gridInfoFactory.CreateHorizontal(name, 0, previousOffset);
+                }
+                else
+                {
+                    newGrid = this.gridInfoFactory.CreateHorizontal(name, previousOffset);
+                }
             }
 
             var updatedGrids = parallelGrids.ToList();

@@ -19,6 +19,13 @@ namespace Onbox.GridGenerator.Services
             return gridInfo;
         }
 
+        public GridInfo CreateVertical(string name, double offset, double previousOffset)
+        {
+            var gridInfo = this.Create(name, offset, previousOffset, this.gridSettings.DefaultLength);
+            gridInfo.IsVertical = true;
+            return gridInfo;
+        }
+
         public GridInfo CreateVertical(string name, double offset, double previousOffset, double length)
         {
             var gridInfo = this.Create(name, offset, previousOffset, length);
@@ -29,6 +36,13 @@ namespace Onbox.GridGenerator.Services
         public GridInfo CreateHorizontal(string name, double previousOffset)
         {
             var gridInfo = this.Create(name, this.gridSettings.DefaultOffset, previousOffset, this.gridSettings.DefaultLength);
+            gridInfo.IsVertical = false;
+            return gridInfo;
+        }
+
+        public GridInfo CreateHorizontal(string name, double offset, double previousOffset)
+        {
+            var gridInfo = this.Create(name, offset, previousOffset, this.gridSettings.DefaultLength);
             gridInfo.IsVertical = false;
             return gridInfo;
         }

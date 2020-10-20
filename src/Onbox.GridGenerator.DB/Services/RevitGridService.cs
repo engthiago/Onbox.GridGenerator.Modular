@@ -107,7 +107,7 @@ namespace Onbox.GridGenerator.Services
                 {
                     var gridInfo = this.ConvertToVerticalGridInfo(grid, currentOffset);
                     gridInfoList.Add(gridInfo);
-                    currentOffset = gridInfo.Offset;
+                    currentOffset += gridInfo.Offset;
                 }
             }
             else
@@ -116,7 +116,7 @@ namespace Onbox.GridGenerator.Services
                 {
                     var gridInfo = this.ConvertToHorizontalGridInfo(grid, currentOffset);
                     gridInfoList.Add(gridInfo);
-                    currentOffset = gridInfo.Offset;
+                    currentOffset += gridInfo.Offset;
                 }
             }
 
